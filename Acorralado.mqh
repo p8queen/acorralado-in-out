@@ -65,7 +65,7 @@ void Acorralado::setInitialOrder(int OP){
    firstOrderOP = OP;
    
    if(OP==OP_BUY){
-      price = Bid;
+      price = Ask;
       priceBuys = price;
       st = priceBuys - 2*deltaTips;
       tp = priceBuys + deltaTips - deltaStTp;
@@ -73,7 +73,7 @@ void Acorralado::setInitialOrder(int OP){
       }
    else{
       price = Bid;
-      priceSells = price;
+      priceSells = Ask;
       st = priceSells + 2*deltaTips;
       tp = priceSells - deltaTips + deltaStTp;
       priceBuys = priceSells + deltaTips;
