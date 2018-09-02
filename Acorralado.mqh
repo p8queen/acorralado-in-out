@@ -70,16 +70,18 @@ void Acorralado::setInitialOrder(int OP){
       st = priceBuys - 2*deltaTips;
       tp = priceBuys + deltaTips - deltaStTp;
       priceSells = priceBuys - deltaTips;
+      OrderSend(Symbol(),OP_BUY,lots,price,10,st,tp,name,magicNumber);
       }
    else{
-      price = Bid;
+      price = Ask;
       priceSells = Ask;
       st = priceSells + 2*deltaTips;
       tp = priceSells - deltaTips + deltaStTp;
       priceBuys = priceSells + deltaTips;
+      OrderSend(Symbol(),OP_SELLLIMIT,lots,price,10,st,tp,name,magicNumber);
       }
    
-   OrderSend(Symbol(),OP,lots,price,10,st,tp,name,magicNumber);
+   
    lots += 0.02;
    
    if(OP==OP_BUY){   
