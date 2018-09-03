@@ -11,7 +11,7 @@
 #property link      "https://www.awtt.com.ar"
 #property version   "1.00"
 #property strict
-#include "acorralado.mqh"
+#include "start.mqh"
 
 //          (name, magicNumber)
 Acorralado bot("bot",1500), tob("tob",1600);
