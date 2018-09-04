@@ -15,15 +15,32 @@
 
 //          (name, magicNumber)
 Acorralado bot("bot",1500), tob("tob",1600);
-
+enum choice{
+   bbot = 0,  //bot
+   btob = 1,  //tob
+   both = 2,  //both
+   };
+enum io{
+   buy = OP_BUY, //buy
+   sell = OP_SELL, //sell
+   };
+input choice botToStart=2;
+input io InitialOrder = OP_BUY;    
 //+------------------------------------------------------------------+
 //| Expert initialization function                                   |
 //+------------------------------------------------------------------+
 int OnInit()
   {
   Comment("Point: ",Point);
-  bot.setInitialOrder(OP_SELL);
-  tob.setInitialOrder(OP_BUY);
+  if(botToStart == 2){
+     bot.setInitialOrder(OP_SELL);
+     tob.setInitialOrder(OP_BUY);
+     }else{
+         if(botToStart==0)
+            bot.setInitialOrder(InitialOrder);
+         else
+            tob.setInitialOrder(InitialOrder);   
+         }
   
      
 
