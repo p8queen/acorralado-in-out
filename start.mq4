@@ -21,7 +21,7 @@ Acorralado bot("bot",1500), tob("tob",1600);
 //+------------------------------------------------------------------+
 int OnInit()
   {
-  Comment(Point);
+  Comment("Point: ",Point);
   bot.setInitialOrder(OP_SELL);
   tob.setInitialOrder(OP_BUY);
   
