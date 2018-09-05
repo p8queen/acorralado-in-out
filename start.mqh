@@ -54,10 +54,10 @@ void Acorralado::setInitialOrder(int OP){
       priceBuys = price;
       st = priceBuys - 2*deltaTips;
       tp = priceBuys + deltaTips - deltaStTp;
-      priceSells = priceBuys - deltaTips;
       OrderSend(Symbol(),OP_BUY,lots,price,10,st,tp,name,magicNumber);
+      
       priceBuys=tp;
-      st = priceBuys - 2*deltaTips;
+      st = priceBuys + 2*deltaTips;
       tp = price;
       OrderSend(Symbol(),OP_SELLLIMIT,lots,priceBuys,10,st,tp,name,magicNumber);
       }
@@ -66,8 +66,8 @@ void Acorralado::setInitialOrder(int OP){
       priceSells = Ask;
       st = priceSells + 2*deltaTips;
       tp = priceSells - deltaTips + deltaStTp;
-      priceBuys = priceSells + deltaTips;
       OrderSend(Symbol(),OP_SELL,lots,price,10,st,tp,name,magicNumber);
+      
       priceSells = tp;
       st = priceSells - 2*deltaTips;
       tp = price;
@@ -77,11 +77,13 @@ void Acorralado::setInitialOrder(int OP){
    
    lots += 0.02;
    
-   if(OP==OP_BUY){   
+   if(OP==OP_BUY){ 
+      priceSells = Ask-deltaTips;  
       st = priceSells+2*deltaTips;
       tp = priceSells-deltaTips + deltaStTp;
       OrderSend(Symbol(),OP_SELLSTOP,lots,priceSells,10,st,tp,name,magicNumber);
   }else{
+      priceBuys = Ask+deltaTips;
       st = priceBuys-2*deltaTips;
       tp = priceBuys+deltaTips - deltaStTp;
       OrderSend(Symbol(),OP_BUYSTOP,lots,priceBuys,10,st,tp,name,magicNumber);
